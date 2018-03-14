@@ -56,7 +56,6 @@ public class NewsAdapter extends ArrayAdapter<News> {
         holder.mAuthorTextView.setText(currentNews.getAuthor());
         holder.mDataTextView.setText(currentNews.getDate());
         holder.mSectionTextView.setText(currentNews.getSectionName());
-        holder.mThumbnailImageView.setVisibility(View.VISIBLE);
         // Load thumbnail with Picasso
         Picasso.with(getContext())
                 .load(currentNews.getThumbnail())

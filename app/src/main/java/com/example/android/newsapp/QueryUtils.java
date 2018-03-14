@@ -3,8 +3,6 @@ package com.example.android.newsapp;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.example.android.newsapp.News;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,9 +28,10 @@ public final class QueryUtils {
     private static final String RESULTS = "results";
     private static final String WEBTITLE = "webTitle";
     private static final String SECTIONNAME = "sectionName";
+    private static final String FIELDS = "fields";
     private static final String THUMBNAIL = "thumbnail";
     private static final String WEBPUBLICATIONDATE = "webPublicationDate";
-    private static final String WEBURL ="webUrl";
+    private static final String WEBURL = "webUrl";
 
     /**
      * Create a private constructor because no one should ever create a {@link QueryUtils} object.
@@ -144,7 +143,6 @@ public final class QueryUtils {
      * parsing the given JSON response.
      */
 
-
     private static List<News> extractFeatureFromJson(String newsJSON) {
         // If the JSON string is empty or null, then return early.
         if (TextUtils.isEmpty(newsJSON)) {
@@ -161,7 +159,6 @@ public final class QueryUtils {
 
             // Create a JSONObject from the JSON response string
 
-
             JSONObject baseJsonResponse = new JSONObject(newsJSON);
 
             JSONObject baseJsonResults = baseJsonResponse.getJSONObject(RESPONSE);
@@ -176,20 +173,23 @@ public final class QueryUtils {
                 String title = currentNews.getString(WEBTITLE);
                 String author = "(unknown author)";
                 String thumbnail = null;
-                if (currentNews.has("fields")) {
-                    JSONObject fieldsObject = currentNews.getJSONObject("fields");
+                if (currentNews.has(FIELDS)) {
+                    JSONObject fieldsObject = currentNews.getJSONObject(FIELDS);
 
                     if (fieldsObject.has("byline")) {
                         author = fieldsObject.getString("byline");
                     }
-                    if (fieldsObject.has(THUMBNAIL)) {
-                        thumbnail = currentNews.getString(THUMBNAIL);
-                    }
+                    // For a given news, if it contains the key called "fields", extract JSONObject
+                    // associated with the key "fields"
+                        // If there is the key called "thumbnail", extract the value for the key called "thumbnail"
+                        if (fieldsObject.has(THUMBNAIL)) {
+                            thumbnail = fieldsObject.getString(THUMBNAIL);
+                }
                 }
                 String sectionName = currentNews.getString(SECTIONNAME);
                 String date = currentNews.getString(WEBPUBLICATIONDATE);
                 String url = currentNews.getString(WEBURL);
-                News news = new News(title, sectionName, author, date, url,thumbnail);
+                News news = new News(title, sectionName, author, date, url, thumbnail);
                 newsList.add(news);
             }
 

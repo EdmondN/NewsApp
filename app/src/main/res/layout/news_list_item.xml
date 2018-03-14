@@ -59,8 +59,7 @@
             android:layout_height="120dp"
             android:layout_alignParentEnd="true"
             android:contentDescription="Image"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/newsapp" />
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/date"

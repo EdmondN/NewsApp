@@ -12,7 +12,7 @@ public class News {
     private String mThumbnail;
     private String mUrl;
 
-    public News(String title, String sectionName, String author, String date, String url, String thumbnail ) {
+    public News(String title, String sectionName, String author, String date, String url, String thumbnail) {
         mTitle = title;
         mAuthor = author;
         mSectionName = sectionName;
@@ -31,7 +31,9 @@ public class News {
     /**
      * Returns the Author name of the news.
      */
-    public String getAuthor() {return mAuthor;}
+    public String getAuthor() {
+        return mAuthor;
+    }
 
     /**
      * Returns the SectionName of the news.
@@ -46,6 +48,7 @@ public class News {
     public String getThumbnail() {
         return mThumbnail;
     }
+
     /**
      * Returns the date of the news.
      */
