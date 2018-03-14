@@ -189,7 +189,7 @@ public final class QueryUtils {
                 String sectionName = currentNews.getString(SECTIONNAME);
                 String date = currentNews.getString(WEBPUBLICATIONDATE);
                 String url = currentNews.getString(WEBURL);
-                News news = new News(title, sectionName, author, thumbnail, date, url);
+                News news = new News(title, sectionName, author, date, url,thumbnail);
                 newsList.add(news);
             }
 

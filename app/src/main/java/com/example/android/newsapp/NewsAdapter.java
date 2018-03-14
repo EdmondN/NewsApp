@@ -41,8 +41,8 @@ public class NewsAdapter extends ArrayAdapter<News> {
             holder.mTitleTextView = convertView.findViewById(R.id.title);
             holder.mAuthorTextView = convertView.findViewById(R.id.author);
             holder.mDataTextView = convertView.findViewById(R.id.date);
-            holder.mThumbnailImageView = convertView.findViewById(R.id.thumbnail_image_card);
             holder.mSectionTextView = convertView.findViewById(R.id.section);
+            holder.mThumbnailImageView = convertView.findViewById(R.id.thumbnail_image_card);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -54,8 +54,8 @@ public class NewsAdapter extends ArrayAdapter<News> {
         holder.mTitleTextView.setText(currentNews.getTitle());
         holder.mAuthorTextView.setText(currentNews.getAuthor());
         holder.mDataTextView.setText(currentNews.getDate());
-        holder.mThumbnailImageView.setVisibility(View.VISIBLE);
         holder.mSectionTextView.setText(currentNews.getSectionName());
+        holder.mThumbnailImageView.setVisibility(View.VISIBLE);
 
         // Return the list item view that is now showing the appropriate data
         return convertView;
