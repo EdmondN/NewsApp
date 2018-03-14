@@ -8,8 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.newsapp.News;
-import com.example.android.newsapp.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -17,6 +16,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
     public NewsAdapter(Context context, List<News> News) {
         super(context, 0, News);
     }
+
     // Create class ViewHolder for efficient memory usage
     static class ViewHolder {
         private TextView mTitleTextView;
@@ -46,6 +46,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
+
         }
         // Find the feed news at the given position in the list of feed news
         News currentNews = getItem(position);
@@ -56,6 +57,12 @@ public class NewsAdapter extends ArrayAdapter<News> {
         holder.mDataTextView.setText(currentNews.getDate());
         holder.mSectionTextView.setText(currentNews.getSectionName());
         holder.mThumbnailImageView.setVisibility(View.VISIBLE);
+        // Load thumbnail with Picasso
+        Picasso.with(getContext())
+                .load(currentNews.getThumbnail())
+                .placeholder(R.drawable.newsapp)
+                .error(R.drawable.newsapp)
+                .into(holder.mThumbnailImageView);
 
         // Return the list item view that is now showing the appropriate data
         return convertView;
