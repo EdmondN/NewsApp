@@ -175,16 +175,17 @@ public final class QueryUtils {
                 String thumbnail = null;
                 if (currentNews.has(FIELDS)) {
                     JSONObject fieldsObject = currentNews.getJSONObject(FIELDS);
+                    // For a given news, if it contains the key called "fields", extract JSONObject
+                    // associated with the key "fields"
+                    // If there is the key called "thumbnail", extract the value for the key called "thumbnail"
+                    if (fieldsObject.has(THUMBNAIL)) {
+                        thumbnail = fieldsObject.getString(THUMBNAIL);
+                    }
 
                     if (fieldsObject.has("byline")) {
                         author = fieldsObject.getString("byline");
                     }
-                    // For a given news, if it contains the key called "fields", extract JSONObject
-                    // associated with the key "fields"
-                        // If there is the key called "thumbnail", extract the value for the key called "thumbnail"
-                        if (fieldsObject.has(THUMBNAIL)) {
-                            thumbnail = fieldsObject.getString(THUMBNAIL);
-                }
+
                 }
                 String sectionName = currentNews.getString(SECTIONNAME);
                 String date = currentNews.getString(WEBPUBLICATIONDATE);
