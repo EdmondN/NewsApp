@@ -9,6 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -174,7 +175,9 @@ public final class QueryUtils {
                 JSONObject currentNews = NewsArray.getJSONObject(i);
                 String title = currentNews.getString(WEBTITLE);
                 String author = "(unknown author)";
-                if (currentNews.has(FIELDS)) {
+                String sectionName = currentNews.getString(SECTIONNAME);
+                String date = currentNews.getString(WEBPUBLICATIONDATE);
+                String url = currentNews.getString(WEBURL);
                     JSONObject fieldsObject = currentNews.getJSONObject(FIELDS);
                     // For a given news, if it contains the key called "fields", extract JSONObject
                     // associated with the key "fields"
@@ -182,21 +185,14 @@ public final class QueryUtils {
                     if (fieldsObject.has("byline")) {
                         author = fieldsObject.getString("byline");
                     }
-                    Bitmap bitmap = null;
-                    try {
-                        String thumbnail = fieldsObject.getString(THUMBNAIL);
-                        InputStream in = new URL(thumbnail).openStream();
-                        bitmap = BitmapFactory.decodeStream(in);
-                    } catch (Exception e) {
-                        Log.e("Error", e.getMessage());
-                        e.printStackTrace();
-                    }
+                    String thumbnailUrl = fieldsObject.getString("thumbnail");
 
-                }
-                String sectionName = currentNews.getString(SECTIONNAME);
-                String date = currentNews.getString(WEBPUBLICATIONDATE);
-                String url = currentNews.getString(WEBURL);
-                News news = new News(title, sectionName, author, date, url, );
+                    Bitmap thumbnail = fetchingImage(thumbnailUrl);
+                    // Create a new {@link News} object with the magnitude, location, time,
+                    // and url from the JSON response.
+
+
+                News news = new News(title, sectionName, author, date, url, thumbnail );
                 newsList.add(news);
             }
 
@@ -209,5 +205,48 @@ public final class QueryUtils {
 
         // Return the list of news
         return newsList;
+    }
+    public  static Bitmap fetchingImage(String url){
+        URL mUrl = createUrl(url);
+        Bitmap mBitmap= null;
+        try {
+            mBitmap = makeHTTPConnection(mUrl);
+        }catch (IOException e){
+            Log.e(LOG_TAG,"Making connection for image",e);
+        }
+        return mBitmap;
+    }
+    /** Making a HTTP connection for thumbnails
+     */
+    public static Bitmap makeHTTPConnection(URL url)throws IOException{
+
+        Bitmap mBitmap = null;
+
+        //Creating Http Connection object and inputstream object
+        HttpURLConnection urlConnection;
+        InputStream inputStream = null;
+        try{
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setReadTimeout(2000);
+            urlConnection.setConnectTimeout(2500);
+            urlConnection.setRequestMethod("GET");
+            urlConnection.connect();
+            // If the request was successful (response code 200),
+            // then read the input stream and parse the response.
+            if (urlConnection.getResponseCode() == 200) {
+                inputStream = urlConnection.getInputStream();
+                BufferedInputStream bInputStream =  new BufferedInputStream(inputStream);
+                mBitmap = BitmapFactory.decodeStream(bInputStream);
+                return mBitmap;
+            } else {
+                Log.e("LOG_TAG", "Error response code: " + urlConnection.getResponseCode());
+            }
+
+
+        } catch (IOException e) {
+            Log.e("LOG_TAG", "Problem retrieving results.", e);
+        }
+
+        return mBitmap;
     }
 }

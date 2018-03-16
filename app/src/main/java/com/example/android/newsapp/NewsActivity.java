@@ -125,7 +125,7 @@ public class NewsActivity extends AppCompatActivity
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-        if (key.equals(getString(R.string.settings_min_magnitude_key)) ||
+        if (key.equals(getString(R.string.settings_page_key)) ||
                 key.equals(getString(R.string.settings_order_by_key))) {
             // Clear the ListView as a new query will be kicked off
             mAdapter.clear();

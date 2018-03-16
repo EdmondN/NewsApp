@@ -24,4 +24,8 @@
     <string name="settings_order_by_key" translatable="false">order_by</string>
     <string name="settings_order_by_default" translatable="false">List</string>
 
+    <string name="settings_page_label">Page</string>
+    <string name="settings_page_key" translatable="false">Article max</string>
+    <string name="settings_page_default" translatable="false">10</string>
+
 </resources>
