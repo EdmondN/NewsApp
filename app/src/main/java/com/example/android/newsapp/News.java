@@ -11,10 +11,10 @@ public class News {
     private String mAuthor;
     private String mSectionName;
     private String mDate;
-    private String mBitmap;
+    private Bitmap mBitmap;
     private String mUrl;
 
-    public News(String title, String sectionName, String author, String date, String url, String Bitmap ) {
+    public News(String title, String sectionName, String author, String date, String url, Bitmap Bitmap ) {
         mTitle = title;
         mAuthor = author;
         mSectionName = sectionName;
@@ -47,7 +47,7 @@ public class News {
     /**
      * Returns the date of the news.
      */
-    public String getBitmap() {
+    public Bitmap getBitmap() {
         return mBitmap;
     }
 
