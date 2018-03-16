@@ -154,8 +154,8 @@ public class NewsActivity extends AppCompatActivity
 
         Uri baseUri = Uri.parse(GUARDIAN_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
-        uriBuilder.appendQueryParameter("show-fields", "byline");
-        uriBuilder.appendQueryParameter("page-size", "40");
+        uriBuilder.appendQueryParameter("show-fields","thumbnail");
+        uriBuilder.appendQueryParameter("page-size", "10");
         uriBuilder.appendQueryParameter("q", yourInterested);
         uriBuilder.appendQueryParameter("api-key", "8e35ea00-2f5f-4fc0-b7a0-6c262ed57ba6");
 

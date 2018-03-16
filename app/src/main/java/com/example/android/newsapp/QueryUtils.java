@@ -31,6 +31,7 @@ public final class QueryUtils {
     private static final String RESULTS = "results";
     private static final String WEBTITLE = "webTitle";
     private static final String SECTIONNAME = "sectionName";
+    private static final String JSON_KEY_TAGS = "tags";
     private static final String FIELDS = "fields";
     private static final String THUMBNAIL = "thumbnail";
     private static final String WEBPUBLICATIONDATE = "webPublicationDate";
@@ -174,23 +175,27 @@ public final class QueryUtils {
             for (int i = 0; i < NewsArray.length(); i++) {
                 JSONObject currentNews = NewsArray.getJSONObject(i);
                 String title = currentNews.getString(WEBTITLE);
-                String author = "(unknown author)";
                 String sectionName = currentNews.getString(SECTIONNAME);
                 String date = currentNews.getString(WEBPUBLICATIONDATE);
                 String url = currentNews.getString(WEBURL);
-                    JSONObject fieldsObject = currentNews.getJSONObject(FIELDS);
                     // For a given news, if it contains the key called "fields", extract JSONObject
                     // associated with the key "fields"
                     // If there is the key called "thumbnail", extract the value for the key called "thumbnail"
-                    if (fieldsObject.has("byline")) {
-                        author = fieldsObject.getString("byline");
-                    }
+                JSONObject fieldsObject = currentNews.getJSONObject(FIELDS);
                     String thumbnailUrl = fieldsObject.getString(THUMBNAIL);
-
                     Bitmap thumbnail = fetchingImage(thumbnailUrl);
-                    // Create a new {@link News} object with the magnitude, location, time,
-                    // and url from the JSON response.
 
+                String author = null;
+                if (currentNews.has(JSON_KEY_TAGS)) {
+                    // Extract the JSONArray associated with the key called "tags"
+                    JSONArray tagsArray = currentNews.getJSONArray(JSON_KEY_TAGS);
+                    if (tagsArray.length() != 0) {
+                        // Extract the first JSONObject in the tagsArray
+                        JSONObject firstTagsItem = tagsArray.getJSONObject(0);
+                        // Extract the value for the key called "webTitle"
+                        author = firstTagsItem.getString(WEBTITLE);
+                    }
+                }
 
                 News news = new News(title, sectionName, author, date, url, thumbnail );
                 newsList.add(news);
