@@ -1,6 +1,8 @@
 
 package com.example.android.newsapp;
 
+import android.graphics.Bitmap;
+
 /**
  * An {@link News} object contains information related to a single News.
  */
@@ -12,11 +14,11 @@ public class News {
     private String mBitmap;
     private String mUrl;
 
-    public News(String title, String sectionName, String author, String date, String url, String bitmap) {
+    public News(String title, String sectionName, String author, String date, String url,String Bitmap ) {
         mTitle = title;
         mAuthor = author;
         mSectionName = sectionName;
-        mBitmap = bitmap;
+        mBitmap = Bitmap;
         mDate = date;
         mUrl = url;
     }

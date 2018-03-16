@@ -185,14 +185,14 @@ public final class QueryUtils {
                     if (fieldsObject.has("byline")) {
                         author = fieldsObject.getString("byline");
                     }
-                    String thumbnailUrl = fieldsObject.getString("thumbnail");
+                    String thumbnailUrl = fieldsObject.getString(THUMBNAIL);
 
-                    Bitmap thumbnail = fetchingImage(thumbnailUrl);
+                    Bitmap bitmap = fetchingImage(thumbnailUrl);
                     // Create a new {@link News} object with the magnitude, location, time,
                     // and url from the JSON response.
 
 
-                News news = new News(title, sectionName, author, date, url, thumbnail );
+                News news = new News(title, sectionName, author, date, url, bitmap );
                 newsList.add(news);
             }
 
