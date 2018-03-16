@@ -14,7 +14,7 @@ public class News {
     private String mBitmap;
     private String mUrl;
 
-    public News(String title, String sectionName, String author, String date, String url,String Bitmap ) {
+    public News(String title, String sectionName, String author, String date, String url, String Bitmap ) {
         mTitle = title;
         mAuthor = author;
         mSectionName = sectionName;
