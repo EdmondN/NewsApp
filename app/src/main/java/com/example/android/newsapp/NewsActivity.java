@@ -146,9 +146,6 @@ public class NewsActivity extends AppCompatActivity
     public Loader<List<News>> onCreateLoader(int i, Bundle bundle) {
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String pageNumber = sharedPrefs.getString(
-                getString(R.string.settings_min_magnitude_key),
-                getString(R.string.settings_min_magnitude_default));
 
         String yourInterested = sharedPrefs.getString(
                 getString(R.string.settings_order_by_key),
@@ -158,7 +155,7 @@ public class NewsActivity extends AppCompatActivity
         Uri baseUri = Uri.parse(GUARDIAN_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
         uriBuilder.appendQueryParameter("show-fields", "byline");
-        uriBuilder.appendQueryParameter("page-size", pageNumber);
+        uriBuilder.appendQueryParameter("page-size", "40");
         uriBuilder.appendQueryParameter("q", yourInterested);
         uriBuilder.appendQueryParameter("api-key", "8e35ea00-2f5f-4fc0-b7a0-6c262ed57ba6");
 
