@@ -1,5 +1,7 @@
 package com.example.android.newsapp;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -172,25 +174,29 @@ public final class QueryUtils {
                 JSONObject currentNews = NewsArray.getJSONObject(i);
                 String title = currentNews.getString(WEBTITLE);
                 String author = "(unknown author)";
-                String thumbnail = null;
                 if (currentNews.has(FIELDS)) {
                     JSONObject fieldsObject = currentNews.getJSONObject(FIELDS);
                     // For a given news, if it contains the key called "fields", extract JSONObject
                     // associated with the key "fields"
                     // If there is the key called "thumbnail", extract the value for the key called "thumbnail"
-                    if (fieldsObject.has(THUMBNAIL)) {
-                        thumbnail = fieldsObject.getString(THUMBNAIL);
-                    }
-
                     if (fieldsObject.has("byline")) {
                         author = fieldsObject.getString("byline");
+                    }
+                    Bitmap bitmap = null;
+                    try {
+                        String thumbnail = fieldsObject.getString(THUMBNAIL);
+                        InputStream in = new URL(thumbnail).openStream();
+                        bitmap = BitmapFactory.decodeStream(in);
+                    } catch (Exception e) {
+                        Log.e("Error", e.getMessage());
+                        e.printStackTrace();
                     }
 
                 }
                 String sectionName = currentNews.getString(SECTIONNAME);
                 String date = currentNews.getString(WEBPUBLICATIONDATE);
                 String url = currentNews.getString(WEBURL);
-                News news = new News(title, sectionName, author, date, url, thumbnail);
+                News news = new News(title, sectionName, author, date, url, );
                 newsList.add(news);
             }
 

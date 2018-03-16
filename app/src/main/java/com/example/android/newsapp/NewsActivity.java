@@ -38,7 +38,7 @@ public class NewsActivity extends AppCompatActivity
      * URL for news data from the GUARDIAN_URL dataset
      */
     private static final String GUARDIAN_URL =
-            "http://content.guardianapis.com/search";
+            "http://content.guardianapis.com/search?show-fields=thumbnail";
 
     /**
      * Constant value for the news loader ID. We can choose any integer.

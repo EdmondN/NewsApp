@@ -1,14 +1,13 @@
 package com.example.android.newsapp;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -50,19 +49,15 @@ public class NewsAdapter extends ArrayAdapter<News> {
         }
         // Find the feed news at the given position in the list of feed news
         News currentNews = getItem(position);
-
+        Bitmap bitmap = currentNews.getBitmap();
+        if (bitmap != null) {
+            ImageView.setImageBitmap(this);
+        }
         // Display the INFO of the current feed news in that all TextView
         holder.mTitleTextView.setText(currentNews.getTitle());
         holder.mAuthorTextView.setText(currentNews.getAuthor());
         holder.mDataTextView.setText(currentNews.getDate());
         holder.mSectionTextView.setText(currentNews.getSectionName());
-        // Load thumbnail with Picasso
-        Picasso.with(getContext())
-                .load(currentNews.getThumbnail())
-                .placeholder(R.drawable.newsapp)
-                .error(R.drawable.newsapp)
-                .into(holder.mThumbnailImageView);
-
         // Return the list item view that is now showing the appropriate data
         return convertView;
     }
