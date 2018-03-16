@@ -187,12 +187,12 @@ public final class QueryUtils {
                     }
                     String thumbnailUrl = fieldsObject.getString(THUMBNAIL);
 
-                    Bitmap bitmap = fetchingImage(thumbnailUrl);
+                    Bitmap thumbnail = fetchingImage(thumbnailUrl);
                     // Create a new {@link News} object with the magnitude, location, time,
                     // and url from the JSON response.
 
 
-                News news = new News(title, sectionName, author, date, url, bitmap );
+                News news = new News(title, sectionName, author, date, url, thumbnail );
                 newsList.add(news);
             }
 

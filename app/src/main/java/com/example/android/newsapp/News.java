@@ -11,14 +11,14 @@ public class News {
     private String mAuthor;
     private String mSectionName;
     private String mDate;
-    private Bitmap mBitmap;
+    private Bitmap thumbnail;
     private String mUrl;
 
-    public News(String title, String sectionName, String author, String date, String url, Bitmap Bitmap ) {
+    public News(String title, String sectionName, String author, String date, String url, Bitmap thumbnail ) {
         mTitle = title;
         mAuthor = author;
         mSectionName = sectionName;
-        mBitmap = Bitmap;
+        this.thumbnail = thumbnail;
         mDate = date;
         mUrl = url;
     }
@@ -47,8 +47,8 @@ public class News {
     /**
      * Returns the date of the news.
      */
-    public Bitmap getBitmap() {
-        return mBitmap;
+    public Bitmap getThumbnail() {
+        return thumbnail;
     }
 
     /**

@@ -49,8 +49,8 @@ public class NewsAdapter extends ArrayAdapter<News> {
         }
         // Find the feed news at the given position in the list of feed news
         News currentNews = getItem(position);
-        if(currentNews.getBitmap() != null){
-                holder.mThumbnailImageView.setImageBitmap(currentNews.getBitmap());
+        if(currentNews.getThumbnail() != null){
+                holder.mThumbnailImageView.setImageBitmap(currentNews.getThumbnail());
         }
         // Display the INFO of the current feed news in that all TextView
         holder.mTitleTextView.setText(currentNews.getTitle());
