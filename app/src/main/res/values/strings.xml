@@ -20,12 +20,13 @@
     <string name="settings_title">News Settings</string>
 
     <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
-    <string name="settings_order_by_label">Order By</string>
-    <string name="settings_order_by_key" translatable="false">order_by</string>
-    <string name="settings_order_by_default" translatable="false">List</string>
-
     <string name="settings_page_label">Page</string>
     <string name="settings_page_key" translatable="false">Article max</string>
-    <string name="settings_page_default" translatable="false">10</string>
+    <string name="settings_page_default" translatable="false">Greek</string>
+
+    <string name="settings_interest_label">Your Interest</string>
+    <string name="settings_interest_key" translatable="false">What are you interested in?</string>
+    <string name="settings_interest_default" translatable="false">Greek</string>
+
 
 </resources>

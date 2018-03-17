@@ -3,12 +3,12 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/settings_title">
 
-    <ListPreference
-        android:defaultValue="@string/settings_order_by_default"
-        android:entries="@string/settings_order_by_default"
-        android:entryValues="@string/settings_order_by_label"
-        android:key="@string/settings_order_by_key"
-        android:title="@string/settings_order_by_label" />
+    <EditTextPreference
+        android:defaultValue="@string/settings_interest_default"
+        android:inputType="text"
+        android:key="@string/settings_interest_key"
+        android:selectAllOnFocus="true"
+        android:title="@string/settings_interest_label" />
 
     <EditTextPreference
         android:defaultValue="@string/settings_page_default"

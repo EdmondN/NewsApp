@@ -126,7 +126,7 @@ public class NewsActivity extends AppCompatActivity
     @Override
     public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
         if (key.equals(getString(R.string.settings_page_key)) ||
-                key.equals(getString(R.string.settings_order_by_key))) {
+                key.equals(getString(R.string.settings_interest_key))) {
             // Clear the ListView as a new query will be kicked off
             mAdapter.clear();
 
@@ -146,16 +146,18 @@ public class NewsActivity extends AppCompatActivity
     public Loader<List<News>> onCreateLoader(int i, Bundle bundle) {
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String pageNumber = sharedPrefs.getString(
+                getString(R.string.settings_page_key),
+                getString(R.string.settings_page_default));
 
         String yourInterested = sharedPrefs.getString(
-                getString(R.string.settings_order_by_key),
-                getString(R.string.settings_order_by_default)
-        );
+                getString(R.string.settings_interest_key),
+                getString(R.string.settings_page_default));
 
         Uri baseUri = Uri.parse(GUARDIAN_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
-        uriBuilder.appendQueryParameter("show-fields","thumbnail");
-        uriBuilder.appendQueryParameter("page-size", "10");
+        uriBuilder.appendQueryParameter("show-fields", "thumbnail");
+        uriBuilder.appendQueryParameter("page-size", pageNumber);
         uriBuilder.appendQueryParameter("q", yourInterested);
         uriBuilder.appendQueryParameter("api-key", "8e35ea00-2f5f-4fc0-b7a0-6c262ed57ba6");
 

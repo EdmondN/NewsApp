@@ -39,10 +39,10 @@ public class SettingsActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
 
-            Preference pageNumber = findPreference("Page Number");
+            Preference pageNumber = findPreference(getString(R.string.settings_page_key));
             bindPreferenceSummaryToValue(pageNumber);
 
-            Preference yourInterested = findPreference("Your Interest");
+            Preference yourInterested = findPreference(getString(R.string.settings_interest_key));
             bindPreferenceSummaryToValue(yourInterested);
         }
 
