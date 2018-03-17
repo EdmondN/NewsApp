@@ -191,7 +191,7 @@ public final class QueryUtils {
                 // This is the time format from guardian JSON "2017-10-29T06:00:20Z"
                 // will be changed to 29-10-2017 format
                 String date = currentNews.getString(WEBPUBLICATIONDATE);
-                @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
                 try {
                     Date newDate = format.parse(date);
                     format = new SimpleDateFormat("dd-MM-yyyy"+"\n"+"HH:mm:ss");
