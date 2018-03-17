@@ -32,7 +32,6 @@ public class NewsActivity extends AppCompatActivity
      * Adapter for the list of news
      */
     private NewsAdapter mAdapter;
-    private String todayDate;
 
     /**
      * URL for news data from the GUARDIAN_URL dataset
