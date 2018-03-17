@@ -27,6 +27,9 @@
     <string name="settings_interest_label">Your Interest</string>
     <string name="settings_interest_key" translatable="false">What are you interested in?</string>
     <string name="settings_interest_default" translatable="false">Greek</string>
+    <string name="titleTest">Trump fires Tillerson: president swings axe after series of policy clashes</string>
+    <string name="sectionTest">section</string>
+    <string name="dateTest">Mar 17, 2018</string>
 
 
 </resources>

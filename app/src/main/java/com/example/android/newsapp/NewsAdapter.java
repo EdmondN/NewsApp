@@ -1,7 +1,6 @@
 package com.example.android.newsapp;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,8 +48,8 @@ public class NewsAdapter extends ArrayAdapter<News> {
         }
         // Find the feed news at the given position in the list of feed news
         News currentNews = getItem(position);
-        if(currentNews.getThumbnail() != null){
-                holder.mThumbnailImageView.setImageBitmap(currentNews.getThumbnail());
+        if (currentNews.getThumbnail() != null) {
+            holder.mThumbnailImageView.setImageBitmap(currentNews.getThumbnail());
         }
         // Display the INFO of the current feed news in that all TextView
         holder.mTitleTextView.setText(currentNews.getTitle());

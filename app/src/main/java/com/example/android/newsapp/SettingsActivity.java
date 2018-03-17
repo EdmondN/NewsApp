@@ -62,6 +62,7 @@ public class SettingsActivity extends AppCompatActivity {
             return true;
 
         }
+
         private void bindPreferenceSummaryToValue(Preference preference) {
             preference.setOnPreferenceChangeListener(this);
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(preference.getContext());

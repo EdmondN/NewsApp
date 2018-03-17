@@ -12,28 +12,13 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size"
-        android:drawableLeft="@android:drawable/btn_star_big_on"
-        android:drawablePadding="4dp"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:text="Trump fires Tillerson: president swings axe after series of policy clashes" />
+        tools:text="@string/titleTest"
+        style="@style/titleStyle" />
 
     <TextView
         android:id="@+id/author"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        tools:text="author" />
+        tools:text="author"
+        style="@style/authorStyle" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,33 +28,17 @@
 
         <TextView
             android:id="@+id/section"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingTop="10dp"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            tools:text="section" />
+            tools:text="@string/sectionTest"
+            style="@style/sectionStyle" />
 
         <ImageView
             android:id="@+id/thumbnail_image_card"
-            android:layout_width="150dp"
-            android:layout_height="120dp"
-            android:layout_alignParentEnd="true"
-            android:contentDescription="Image"
-            android:scaleType="centerCrop" />
+            style="@style/thumbnailStyle" />
 
         <TextView
             android:id="@+id/date"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:textAppearance="?android:textAppearanceMedium"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            tools:text="Mar 13, 2018" />
+            tools:text="@string/dateTest"
+            style="@style/dateStyle" />
     </LinearLayout>
 
 </LinearLayout>

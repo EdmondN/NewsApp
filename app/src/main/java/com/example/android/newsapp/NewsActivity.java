@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -55,6 +56,20 @@ public class NewsActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_activity);
+
+        // Go to myurl.com when clicking on logo
+        ImageView coverImage = findViewById(R.id.theguardianCover);
+
+        coverImage.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://www.theguardian.com/"));
+                startActivity(intent);
+            }
+        });
 
         // Find a reference to the {@link ListView} in the layout
         ListView mainListView = findViewById(R.id.list);

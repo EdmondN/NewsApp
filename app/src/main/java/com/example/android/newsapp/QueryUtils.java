@@ -178,12 +178,12 @@ public final class QueryUtils {
                 String sectionName = currentNews.getString(SECTIONNAME);
                 String date = currentNews.getString(WEBPUBLICATIONDATE);
                 String url = currentNews.getString(WEBURL);
-                    // For a given news, if it contains the key called "fields", extract JSONObject
-                    // associated with the key "fields"
-                    // If there is the key called "thumbnail", extract the value for the key called "thumbnail"
+                // For a given news, if it contains the key called "fields", extract JSONObject
+                // associated with the key "fields"
+                // If there is the key called "thumbnail", extract the value for the key called "thumbnail"
                 JSONObject fieldsObject = currentNews.getJSONObject(FIELDS);
-                    String thumbnailUrl = fieldsObject.getString(THUMBNAIL);
-                    Bitmap thumbnail = fetchingImage(thumbnailUrl);
+                String thumbnailUrl = fieldsObject.getString(THUMBNAIL);
+                Bitmap thumbnail = fetchingImage(thumbnailUrl);
 
                 String author = null;
                 if (currentNews.has(JSON_KEY_TAGS)) {
@@ -197,7 +197,7 @@ public final class QueryUtils {
                     }
                 }
 
-                News news = new News(title, sectionName, author, date, url, thumbnail );
+                News news = new News(title, sectionName, author, date, url, thumbnail);
                 newsList.add(news);
             }
 
@@ -211,26 +211,29 @@ public final class QueryUtils {
         // Return the list of news
         return newsList;
     }
-    public  static Bitmap fetchingImage(String url){
+
+    public static Bitmap fetchingImage(String url) {
         URL mUrl = createUrl(url);
-        Bitmap mBitmap= null;
+        Bitmap mBitmap = null;
         try {
             mBitmap = makeHTTPConnection(mUrl);
-        }catch (IOException e){
-            Log.e(LOG_TAG,"Making connection for image",e);
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "Making connection for image", e);
         }
         return mBitmap;
     }
-    /** Making a HTTP connection for thumbnails
+
+    /**
+     * Making a HTTP connection for thumbnails
      */
-    public static Bitmap makeHTTPConnection(URL url)throws IOException{
+    public static Bitmap makeHTTPConnection(URL url) throws IOException {
 
         Bitmap mBitmap = null;
 
         //Creating Http Connection object and inputstream object
         HttpURLConnection urlConnection;
         InputStream inputStream = null;
-        try{
+        try {
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setReadTimeout(2000);
             urlConnection.setConnectTimeout(2500);
@@ -240,13 +243,12 @@ public final class QueryUtils {
             // then read the input stream and parse the response.
             if (urlConnection.getResponseCode() == 200) {
                 inputStream = urlConnection.getInputStream();
-                BufferedInputStream bInputStream =  new BufferedInputStream(inputStream);
+                BufferedInputStream bInputStream = new BufferedInputStream(inputStream);
                 mBitmap = BitmapFactory.decodeStream(bInputStream);
                 return mBitmap;
             } else {
                 Log.e("LOG_TAG", "Error response code: " + urlConnection.getResponseCode());
             }
-
 
         } catch (IOException e) {
             Log.e("LOG_TAG", "Problem retrieving results.", e);
