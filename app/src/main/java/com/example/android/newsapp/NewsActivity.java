@@ -169,11 +169,11 @@ public class NewsActivity extends AppCompatActivity
 
         Uri baseUri = Uri.parse(GUARDIAN_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
-        uriBuilder.appendQueryParameter("show-fields", "thumbnail");
-        uriBuilder.appendQueryParameter("page-size", pageNumber);
-        uriBuilder.appendQueryParameter("q", yourInterested);
-        uriBuilder.appendQueryParameter("show-tags", "contributor");
-        uriBuilder.appendQueryParameter("api-key", "8e35ea00-2f5f-4fc0-b7a0-6c262ed57ba6");
+        uriBuilder.appendQueryParameter(getString(R.string.showfields), getString(R.string.thumbnail));
+        uriBuilder.appendQueryParameter(getString(R.string.pageSize), pageNumber);
+        uriBuilder.appendQueryParameter(getString(R.string.q), yourInterested);
+        uriBuilder.appendQueryParameter(getString(R.string.showTags), getString(R.string.contributor));
+        uriBuilder.appendQueryParameter(getString(R.string.apiKey), getString(R.string.apiKeyDecrypt));
 
         return new NewsLoader(this, uriBuilder.toString());
     }

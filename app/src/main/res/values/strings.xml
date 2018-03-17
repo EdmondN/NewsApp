@@ -33,4 +33,12 @@
     <string name="coverImageUrl">https://www.theguardian.com/</string>
     <string name="theguardiancover">theguardianCover</string>
     <string name="thumbnailimage">thumbnailImage</string>
+    <string name="showfields">show-fields</string>
+    <string name="thumbnail">thumbnail</string>
+    <string name="pageSize">page-size</string>
+    <string name="q">q</string>
+    <string name="showTags">show-tags</string>
+    <string name="contributor">contributor</string>
+    <string name="apiKey">api-key</string>
+    <string name="apiKeyDecrypt">8e35ea00-2f5f-4fc0-b7a0-6c262ed57ba6</string>
 </resources>
