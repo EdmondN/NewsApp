@@ -30,6 +30,6 @@
     <string name="titleTest">Trump fires Tillerson: president swings axe after series of policy clashes</string>
     <string name="sectionTest">section</string>
     <string name="dateTest">Mar 17, 2018</string>
-
-
+    <string name="authorTest">author</string>
+    <string name="coverImageUrl">https://www.theguardian.com/</string>
 </resources>

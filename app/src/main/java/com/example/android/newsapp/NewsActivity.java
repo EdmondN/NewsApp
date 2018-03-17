@@ -39,7 +39,7 @@ public class NewsActivity extends AppCompatActivity
      * URL for news data from the GUARDIAN_URL dataset
      */
     private static final String GUARDIAN_URL =
-            "http://content.guardianapis.com/search?show-fields=thumbnail";
+            "https://content.guardianapis.com/search?";
 
     /**
      * Constant value for the news loader ID. We can choose any integer.
@@ -66,7 +66,7 @@ public class NewsActivity extends AppCompatActivity
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse("https://www.theguardian.com/"));
+                intent.setData(Uri.parse(getString(R.string.coverImageUrl)));
                 startActivity(intent);
             }
         });
@@ -174,6 +174,7 @@ public class NewsActivity extends AppCompatActivity
         uriBuilder.appendQueryParameter("show-fields", "thumbnail");
         uriBuilder.appendQueryParameter("page-size", pageNumber);
         uriBuilder.appendQueryParameter("q", yourInterested);
+        uriBuilder.appendQueryParameter("show-tags", "contributor");
         uriBuilder.appendQueryParameter("api-key", "8e35ea00-2f5f-4fc0-b7a0-6c262ed57ba6");
 
         return new NewsLoader(this, uriBuilder.toString());
