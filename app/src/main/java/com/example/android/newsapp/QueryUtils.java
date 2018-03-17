@@ -1,5 +1,6 @@
 package com.example.android.newsapp;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.TextUtils;
@@ -19,7 +20,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 
 public final class QueryUtils {
 
@@ -176,7 +180,6 @@ public final class QueryUtils {
                 JSONObject currentNews = NewsArray.getJSONObject(i);
                 String title = currentNews.getString(WEBTITLE);
                 String sectionName = currentNews.getString(SECTIONNAME);
-                String date = currentNews.getString(WEBPUBLICATIONDATE);
                 String url = currentNews.getString(WEBURL);
                 // For a given news, if it contains the key called "fields", extract JSONObject
                 // associated with the key "fields"
@@ -184,6 +187,18 @@ public final class QueryUtils {
                 JSONObject fieldsObject = currentNews.getJSONObject(FIELDS);
                 String thumbnailUrl = fieldsObject.getString(THUMBNAIL);
                 Bitmap thumbnail = fetchingImage(thumbnailUrl);
+
+                // This is the time format from guardian JSON "2017-10-29T06:00:20Z"
+                // will be changed to 29-10-2017 format
+                String date = currentNews.getString(WEBPUBLICATIONDATE);
+                @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+                try {
+                    Date newDate = format.parse(date);
+                    format = new SimpleDateFormat("dd-MM-yyyy"+"\n"+"HH:mm:ss");
+                    date = format.format(newDate);
+                }catch (ParseException e) {
+                    Log.e(LOG_TAG, "Problem with parsing the date format");
+                }
 
                 String author = null;
                 if (currentNews.has(JSON_KEY_TAGS)) {
@@ -197,7 +212,7 @@ public final class QueryUtils {
                     }
                 }
 
-                News news = new News(title, sectionName, author, date, url, thumbnail);
+                News news = new News(title, sectionName, author, "Date:"+"\n"+date, url, thumbnail);
                 newsList.add(news);
             }
 
