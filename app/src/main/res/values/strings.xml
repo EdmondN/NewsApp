@@ -21,7 +21,7 @@
     <!-- Strings For Order-By Preference [CHAR LIMIT=30] -->
     <string name="settings_page_label">Page</string>
     <string name="settings_page_key" translatable="false">Article max</string>
-    <string name="settings_page_default" translatable="false">Greek</string>
+    <string name="settings_page_default" translatable="false">10</string>
 
     <string name="settings_interest_label">Your Interest</string>
     <string name="settings_interest_key" translatable="false">What are you interested in?</string>
