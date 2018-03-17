@@ -6,7 +6,8 @@
 
     <ImageView
         android:id="@+id/theguardianCover"
-        style="@style/theguardianCover" />
+        style="@style/theguardianCover"
+        android:contentDescription="@string/theguardiancover" />
 
     <ListView
         android:id="@+id/list"
@@ -21,14 +22,12 @@
         android:id="@+id/empty_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:textAppearance="?android:textAppearanceMedium" />
 
     <ProgressBar
         android:id="@+id/loading_indicator"
         style="@style/Widget.AppCompat.ProgressBar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

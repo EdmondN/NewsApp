@@ -6,4 +6,5 @@
     android:name="com.example.android.newsapp.SettingsActivity$NewsPreferenceFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsActivity"></fragment>
+    tools:context=".SettingsActivity"
+    android:id="@+id/settings_activity" />
