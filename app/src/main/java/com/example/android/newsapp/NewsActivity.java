@@ -1,7 +1,6 @@
 
 package com.example.android.newsapp;
 
-import android.annotation.SuppressLint;
 import android.app.LoaderManager;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
@@ -21,8 +20,6 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import java.util.ArrayList;
 import java.util.List;

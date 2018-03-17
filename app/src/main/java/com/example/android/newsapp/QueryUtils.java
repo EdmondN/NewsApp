@@ -1,6 +1,5 @@
 package com.example.android.newsapp;
 
-import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.TextUtils;
@@ -19,11 +18,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.text.SimpleDateFormat;
-import java.text.ParseException;
 
 public final class QueryUtils {
 
@@ -194,9 +193,9 @@ public final class QueryUtils {
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
                 try {
                     Date newDate = format.parse(date);
-                    format = new SimpleDateFormat("dd-MM-yyyy"+"\n"+"HH:mm:ss");
+                    format = new SimpleDateFormat("dd-MM-yyyy" + "\n" + "HH:mm:ss");
                     date = format.format(newDate);
-                }catch (ParseException e) {
+                } catch (ParseException e) {
                     Log.e(LOG_TAG, "Problem with parsing the date format");
                 }
 
@@ -212,7 +211,7 @@ public final class QueryUtils {
                     }
                 }
 
-                News news = new News(title, sectionName, author, "Date:"+"\n"+date, url, thumbnail);
+                News news = new News(title, sectionName, author, "Date:" + "\n" + date, url, thumbnail);
                 newsList.add(news);
             }
 
