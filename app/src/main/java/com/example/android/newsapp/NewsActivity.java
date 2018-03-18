@@ -55,7 +55,7 @@ public class NewsActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_activity);
 
-        // Go to myurl.com when clicking on logo
+        // Go to theguardian.com when clicking on logo
         ImageView coverImage = findViewById(R.id.theguardianCover);
 
         coverImage.setOnClickListener(new View.OnClickListener() {
