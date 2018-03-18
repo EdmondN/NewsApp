@@ -25,8 +25,8 @@ public class NewsAdapter extends ArrayAdapter<News> {
     }
 
     /**
-     * Returns a list item view that displays information about the feed news at the given position
-     * in the list of feeds news.
+     * Returns a list item view that displays information about the news at the given position
+     * in the list of news.
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -46,12 +46,12 @@ public class NewsAdapter extends ArrayAdapter<News> {
             holder = (ViewHolder) convertView.getTag();
 
         }
-        // Find the feed news at the given position in the list of feed news
+        // Find the news at the given position in the list of news
         News currentNews = getItem(position);
         if (currentNews.getThumbnail() != null) {
             holder.mThumbnailImageView.setImageBitmap(currentNews.getThumbnail());
         }
-        // Display the INFO of the current feed news in that all TextView
+        // Display the INFO of the current news in that all TextView
         holder.mTitleTextView.setText(currentNews.getTitle());
         holder.mAuthorTextView.setText(currentNews.getAuthor());
         holder.mDataTextView.setText(currentNews.getDate());
