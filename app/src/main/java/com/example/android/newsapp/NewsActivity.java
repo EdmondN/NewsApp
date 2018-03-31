@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,10 +25,17 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class NewsActivity extends AppCompatActivity
         implements LoaderCallbacks<List<News>>,
         SharedPreferences.OnSharedPreferenceChangeListener {
 
+    @BindView(R.id.theguardianCover) ImageView coverImage;
+    @BindView(R.id.list) ListView mainListView;
+    @BindView(R.id.empty_view) TextView mEmptyStateTextView;
+    @BindView(R.id.loading_indicator) View loadingIndicator;
     /**
      * Adapter for the list of news
      */
@@ -48,16 +56,14 @@ public class NewsActivity extends AppCompatActivity
     /**
      * TextView that is displayed when the list is empty
      */
-    private TextView mEmptyStateTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_activity);
+        ButterKnife.bind(this);
 
         // Go to theguardian.com when clicking on logo
-        ImageView coverImage = findViewById(R.id.theguardianCover);
-
         coverImage.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -70,9 +76,7 @@ public class NewsActivity extends AppCompatActivity
         });
 
         // Find a reference to the {@link ListView} in the layout
-        ListView mainListView = findViewById(R.id.list);
 
-        mEmptyStateTextView = findViewById(R.id.empty_view);
         mainListView.setEmptyView(mEmptyStateTextView);
 
         // Create a new adapter that takes an empty list of news as input
@@ -128,7 +132,6 @@ public class NewsActivity extends AppCompatActivity
         } else {
             // Otherwise, display error
             // First, hide loading indicator so error message will be visible
-            View loadingIndicator = findViewById(R.id.loading_indicator);
             loadingIndicator.setVisibility(View.GONE);
 
             // Update empty state with no connection error message
@@ -147,7 +150,6 @@ public class NewsActivity extends AppCompatActivity
             mEmptyStateTextView.setVisibility(View.GONE);
 
             // Show the loading indicator while new data is being fetched
-            View loadingIndicator = findViewById(R.id.loading_indicator);
             loadingIndicator.setVisibility(View.VISIBLE);
 
             // Restart the loader to requery the USGS as the query settings have been updated
@@ -181,7 +183,6 @@ public class NewsActivity extends AppCompatActivity
     @Override
     public void onLoadFinished(Loader<List<News>> loader, List<News> news) {
         // Hide loading indicator because the data has been loaded
-        View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
 
         // Set empty state text to display "No news found."

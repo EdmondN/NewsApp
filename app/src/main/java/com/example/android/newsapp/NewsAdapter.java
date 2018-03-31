@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class NewsAdapter extends ArrayAdapter<News> {
     public NewsAdapter(Context context, List<News> News) {
         super(context, 0, News);
@@ -17,11 +20,16 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
     // Create class ViewHolder for efficient memory usage
     static class ViewHolder {
-        private TextView mTitleTextView;
-        private TextView mAuthorTextView;
-        private TextView mDataTextView;
-        private ImageView mThumbnailImageView;
-        private TextView mSectionTextView;
+        @BindView(R.id.title)
+        TextView mTitleTextView;
+        @BindView(R.id.author)
+        TextView mAuthorTextView;
+        @BindView(R.id.date)
+        TextView mDataTextView;
+        @BindView(R.id.thumbnail_image_card)
+        ImageView mThumbnailImageView;
+        @BindView(R.id.section)
+        TextView mSectionTextView;
     }
 
     /**
@@ -36,11 +44,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
             convertView = LayoutInflater.from(getContext()).inflate(
                     R.layout.news_list_item, parent, false);
             holder = new ViewHolder();
-            holder.mTitleTextView = convertView.findViewById(R.id.title);
-            holder.mAuthorTextView = convertView.findViewById(R.id.author);
-            holder.mDataTextView = convertView.findViewById(R.id.date);
-            holder.mSectionTextView = convertView.findViewById(R.id.section);
-            holder.mThumbnailImageView = convertView.findViewById(R.id.thumbnail_image_card);
+            ButterKnife.bind(this, convertView);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();

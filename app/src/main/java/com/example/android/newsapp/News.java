@@ -2,6 +2,10 @@
 package com.example.android.newsapp;
 
 import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import butterknife.BindView;
 
 /**
  * An {@link News} object contains information related to a single News.
