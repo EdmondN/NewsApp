@@ -30,6 +30,11 @@ public class NewsAdapter extends ArrayAdapter<News> {
         ImageView mThumbnailImageView;
         @BindView(R.id.section)
         TextView mSectionTextView;
+
+        // Todo : Tell Eddie about this Constructor and the bind part
+        public ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
     }
 
     /**
@@ -43,8 +48,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(
                     R.layout.news_list_item, parent, false);
-            holder = new ViewHolder();
-            ButterKnife.bind(this, convertView);
+            holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
