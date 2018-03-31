@@ -31,7 +31,6 @@ public class NewsAdapter extends ArrayAdapter<News> {
         @BindView(R.id.section)
         TextView mSectionTextView;
 
-        // Todo : Tell Eddie about this Constructor and the bind part
         public ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
